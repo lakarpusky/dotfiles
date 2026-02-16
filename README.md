@@ -13,7 +13,7 @@ Personal configuration for Neovim, Alacritty, and tmux — managed with [GNU Sto
 ## Install
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/dotfiles
-cd ~/dotfiles
+git clone https://github.com/YOUR_USERNAME/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
 stow nvim alacritty tmux
 ```
