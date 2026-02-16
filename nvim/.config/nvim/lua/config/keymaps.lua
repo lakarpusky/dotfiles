@@ -42,7 +42,7 @@ map("n", "<M-Down>", ":m +1<CR>==", { desc = "Move line down (Alt + Down)" })
 map("n", "<M-Up>", ":m -2<CR>==", { desc = "Move line up (Alt + Up)" })
 
 map("i", "<S-Down>", "<Esc>Vj", { desc = "Start line selection down [i](Shift + Down)" })
-map("i", "<S-Up>", "<Esc>Vk", { desc = "Start line selection up [i](Shift + Down)" })
+map("i", "<S-Up>", "<Esc>Vk", { desc = "Start line selection up [i](Shift + Up)" })
 map("i", "<M-BS>", "<C-w>", { desc = "Delete words backward (Alt + Delete)" })
 
 map("v", "<S-Down>", "j", { desc = "Extend selection down (Shift + Down)" })

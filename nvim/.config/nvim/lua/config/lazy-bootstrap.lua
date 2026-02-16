@@ -23,7 +23,7 @@ require("lazy").setup({
     { import = "plugins" },
   },
 }, {
-  checker = { enabled = true, notity = false },
+  checker = { enabled = true, notify = false },
   change_detection = { notify = false },
   git = { timeout = 300 }, -- from default (120) to 300 bc some clone timeout checks
   ui = {
