@@ -1,0 +1,84 @@
+[env]
+# Set TERM for proper color support
+TERM = "xterm-256color"
+
+[terminal.shell]
+# Auto-start tmux with session management
+program = "/bin/zsh"
+args = [
+  "-l",
+  "-c",
+  "tmux attach || tmux new-session -s main"
+]
+
+[window]
+# Window settings
+padding = { x = 0, y = 0 }
+dynamic_padding = true
+decorations = "Buttonless"
+opacity = 0.95
+dynamic_title = true
+blur = true
+option_as_alt = "Both"
+
+[font]
+size = 11.3
+
+# Font configuration for better readability
+normal = { family = "MesloLGS Nerd Font Mono", style = "Regular" }
+bold = { family = "MesloLGS Nerd Font Mono", style = "Bold" }
+italic = { family = "MesloLGS Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "MesloLGS Nerd Font Mono", style = "Bold Italic" }
+
+[font.offset]
+x = 0
+y = 3
+
+[selection]
+# Copy to clipboard on selection
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[mouse]
+# Hide cursor when typing
+hide_when_typing = true
+
+[[keyboard.bindings]]
+key = "<"
+mods = "Command|Shift"  # Cmd + Shift + <
+chars = "\u0001p"       # Sends Ctrl-a then p (previous window)
+
+[[keyboard.bindings]]
+key = ">" 
+mods = "Command|Shift" # Cmd + Shift + >
+chars = "\u0001n"      # Sends Ctrl-a then n (next window)
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Command|Shift"
+chars = "\u0001c" # Ctrl-a then c (create new window)
+
+[[keyboard.bindings]]
+key = "Left"
+mods = "Command|Shift"
+chars = "\u0001\u001b[D" # Ctrl-a then Left arrow
+
+[[keyboard.bindings]]
+key = "Right"
+mods = "Command|Shift"
+chars = "\u0001\u001b[C" # Ctrl-a then Right arrow
+
+[[keyboard.bindings]]
+key = "Up"
+mods = "Command|Shift"
+chars = "\u0001\u001b[A" # Ctrl-a then Up arrow
+
+[[keyboard.bindings]]
+key = "Down"
+mods = "Command|Shift"
+chars = "\u0001\u001b[B" # Ctrl-a then Down arrow
+
+[general]
+import = [
+  "~/.config/alacritty/themes/tokyo-night.toml"
+]

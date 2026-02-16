@@ -1,0 +1,11 @@
+/undo
+.tests
+debug
+.repro
+.DS_Store
+*.log
+data
+lazy-lock.json
+spell
+.DS_Store
+snippets
