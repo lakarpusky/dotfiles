@@ -1,6 +1,6 @@
 [env]
 # Set TERM for proper color support
-TERM = "xterm-256color"
+TERM = "alacritty"
 
 [terminal.shell]
 # Auto-start tmux with session management
