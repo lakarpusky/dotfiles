@@ -9,8 +9,7 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
     -- optional, but required for fuzzy finder support
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   },
   opts = {
     icons = {

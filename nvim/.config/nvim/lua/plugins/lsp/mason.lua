@@ -2,47 +2,38 @@
 ----------
 -- source: https://github.com/mason-org/mason.nvim
 -- -------------------------------------------------
--- Helps manage the instalation and configuration of language servers (LS),
+-- Helps manage the installation and configuration of language servers (LS),
 -- making it easier to set up dev environments.
 -- -----------
--- It works alognside Mason.nvim to automatically install and
+-- It works alongside Mason.nvim to automatically install and
 -- enable Language Servers as needed.
 --
 return {
   "williamboman/mason.nvim",
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-  },
+  dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
   config = function()
-    local mason, mason_lsp = require("mason"), require("mason-lspconfig")
+    local mason = require("mason")
     local mason_tool_installer = require("mason-tool-installer")
 
-    mason.setup({
-      ui = { icons = require("utils.icons").mason },
-    })
+    mason.setup({ ui = { icons = require("utils.icons").mason } })
 
-    mason_lsp.setup({
-      ensure_installed = {
-        "ts_ls",
-        "html",
-        "cssls",
-        "stylelint_lsp",
-        "lua_ls",
-        "emmet_ls",
-        "eslint",
-        "jsonls",
-        "yamlls",
-      },
-      automatic_installation = true,
-    })
-
+    -- Single source of truth for all Mason-managed tools
+    -- LSP servers + formatters + linters + debug adapters
     mason_tool_installer.setup({
       ensure_installed = {
+        "html-lsp",
+        "css-lsp",
+        "stylelint-lsp",
+        "lua-language-server",
+        "emmet-ls",
+        "eslint-lsp",
+        "json-lsp",
+        "yaml-language-server",
+        -- Formatters
         "prettierd",
         "stylua",
-        "eslint_d",
         "mdformat",
+        -- Linters
         "jsonlint",
         "yamllint",
         "luacheck",

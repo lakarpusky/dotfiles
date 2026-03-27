@@ -6,10 +6,7 @@
 local u = require("utils")
 return {
   "nvim-lualine/lualine.nvim",
-  dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons",
-  },
+  dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     options = {
       theme = "auto",
@@ -22,31 +19,17 @@ return {
     },
     sections = {
       lualine_a = {
-        {
-          "mode",
-          fmt = function(s)
-            return u.ui.mode_map[s] or s:sub(1, 1)
-          end,
-        },
+        -- stylua: ignore
+        { "mode", fmt = function(s) return u.ui.mode_map[s] or s:sub(1, 1) end },
       },
       lualine_b = {
-        {
-          u.ui.git_diff,
-          color = nil,
-          cond = function()
-            return u.ui.git_diff() ~= ""
-          end,
-        },
+        -- stylua: ignore
+        { u.ui.git_diff, color = nil, cond = function() return u.ui.git_diff() ~= "" end },
       },
       lualine_c = {
-        {
-          "diagnostics",
-          sources = { "nvim_diagnostic" },
-          draw_empty = false,
-        },
-        function()
-          return "%="
-        end,
+        { "diagnostics", sources = { "nvim_diagnostic" }, draw_empty = false },
+        -- stylua: ignore
+        function() return "%=" end,
         {
           "filetype",
           colored = true,
@@ -72,9 +55,8 @@ return {
           color = { fg = "#333333", bg = "#dcd7ba" },
           separator = { left = " ", right = "" },
           padding = { left = 0, right = 0 },
-          cond = function()
-            return u.ui.word_count() ~= ""
-          end,
+          -- stylua: ignore
+          cond = function() return u.ui.word_count() ~= "" end,
         },
         { "searchcount" },
         { "selectioncount" },
@@ -83,9 +65,8 @@ return {
           color = { fg = "#333333", bg = "#ff6666" },
           separator = { left = " ", right = "" },
           padding = { left = 0, right = 0 },
-          cond = function()
-            return u.ui.macro_recording() ~= ""
-          end,
+          -- stylua: ignore
+          cond = function() return u.ui.macro_recording() ~= "" end,
         },
       },
       lualine_x = {
@@ -100,9 +81,8 @@ return {
           colored = true,
           color = { fg = "#76946a" },
           padding = { left = 0, right = 1 },
-          cond = function()
-            return u.lsp.status() ~= ""
-          end,
+          -- stylua: ignore
+          cond = function() return u.lsp.status() ~= "" end,
         },
         {
           u.ui.scroll_position,
@@ -127,9 +107,8 @@ return {
         },
       },
       lualine_c = {
-        function()
-          return "%="
-        end,
+        -- stylua: ignore
+        function() return "%=" end,
         {
           "filename",
           path = 1,
@@ -152,10 +131,16 @@ return {
   config = function(_, opts)
     local lualine = require("lualine")
     lualine.setup(opts)
+
     -- Autocommands for macro recording
-    -- stylua: ignore start
-    local function refresh_lualine() lualine.refresh() end
+    -- stylua: ignore
+    local function refresh_lualine() lualine.refresh()end
+
     u.fn.autocmd("RecordingEnter", { callback = refresh_lualine })
-    u.fn.autocmd("RecordingLeave", { callback = function() vim.defer_fn(refresh_lualine, 50) end })
+    u.fn.autocmd("RecordingLeave", {
+      callback = function()
+        vim.defer_fn(refresh_lualine, 50)
+      end,
+    })
   end,
 }

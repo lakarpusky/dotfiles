@@ -12,7 +12,7 @@ return {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
   },
-  lazy = false,
+  cmd = "Neotree",
   ---@module 'neo-tree'
   ---@type neotree.Config
   opts = {},

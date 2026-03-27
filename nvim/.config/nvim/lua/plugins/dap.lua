@@ -85,6 +85,6 @@ return {
     end
 
     -- Optional: Custom breakpoint sign (integrates with gitsigns/icons)
-    vim.fn.sign_define("DapBrakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
+    vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "", linehl = "", numhl = "" })
   end,
 }

@@ -46,14 +46,6 @@ return {
         "tmux",
         "toml",
       },
-      -- Enable autotagging (w/ nvim-ts-autotag plugin)
-      autotag = {
-        enable = true,
-        enable_rename = true,
-        enable_close = true,
-        enable_close_on_slash = true,
-        filetypes = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact" },
-      },
       incremental_selection = {
         enable = true,
         keymaps = {

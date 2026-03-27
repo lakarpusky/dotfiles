@@ -36,16 +36,6 @@ M.on_attach = function(client, bufnr)
     })
   end
 
-  -- TypeScript-specific: Add organize imports keybinding
-  if client.name == "ts_ls" then
-    vim.keymap.set("n", "<leader>oi", function()
-      vim.lsp.buf.execute_command({
-        command = "_typescript.organizeImports",
-        arguments = { fn.getname(0) },
-      })
-    end, { buffer = bufnr, noremap = true, silent = true })
-  end
-
   vim.keymap.set("n", "K", function()
     vim.lsp.buf.hover({
       border = "rounded",

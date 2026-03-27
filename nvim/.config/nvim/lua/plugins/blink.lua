@@ -8,7 +8,8 @@
 --
 return {
   "saghen/blink.cmp",
-  lazy = false,
+  -- lazy = false,
+  event = { "InsertEnter", "CmdlineEnter" },
   dependencies = {
     "rafamadriz/friendly-snippets",
     "mikavilpas/blink-ripgrep.nvim",

@@ -103,7 +103,7 @@ return {
           and vim.bo[buf].buftype == ""
           and vim.bo[buf].filetype ~= "markdown"
       end,
-      hl = "IblIndent",
+      hl = "SnacksIndent",
     },
 
     fold = {

@@ -8,8 +8,12 @@ function M.attach_markdown(bufnr)
     { "<leader>mp", "<cmd>MarkdownPreview<cr>", desc = "Preview", buffer = bufnr },
     { "<leader>ms", "<cmd>MarkdownPreviewStop<cr>", desc = "Stop Preview", buffer = bufnr },
     { "<leader>mt", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle Preview", buffer = bufnr },
-    { "<leader>mh", "<cmd>Telescope heading<cr>", desc = "Browse Headings", buffer = bufnr },
-    { "<leader>mc", "<cmd>lua require('utils.markdown').toggle_checkbox()<cr>", desc = "Toggle Checkbox", buffer = bufnr },
+    {
+      "<leader>mc",
+      "<cmd>lua require('utils.markdown').toggle_checkbox()<cr>",
+      desc = "Toggle Checkbox",
+      buffer = bufnr,
+    },
   })
 end
 
@@ -36,17 +40,6 @@ function M.attach_jest(bufnr)
     { "<leader>ja", "<cmd>!npm test<cr>", desc = "Test All", buffer = bufnr },
     { "<leader>jw", "<cmd>!npm test -- --watch<cr>", desc = "Test Watch", buffer = bufnr },
     { "<leader>jc", "<cmd>!npm test -- --coverage<cr>", desc = "Test Coverage", buffer = bufnr },
-  })
-end
-
--- Attach spectre-specific keybindings
-function M.attach_spectre(bufnr)
-  local wk = require("which-key")
-  wk.add({
-    { "<leader>s", group = "spectre", buffer = bufnr },
-    { "<leader>sr", desc = "Replace All", buffer = bufnr },
-    { "<leader>sc", desc = "Replace Current", buffer = bufnr },
-    { "<leader>sq", desc = "Send to Quickfix", buffer = bufnr },
   })
 end
 
