@@ -17,7 +17,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "DaikyXendo/nvim-material-icon",
   spec = {
     { import = "plugins.lsp" },
     { import = "plugins" },

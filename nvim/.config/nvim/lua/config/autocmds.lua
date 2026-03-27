@@ -95,7 +95,7 @@ fn.autocmd("BufReadPost", {
 -- Performance: Disable diagnostics in node_modules (prevents LSP lag on large dependency files)
 fn.autocmd({ "BufRead", "BufNewFile" }, {
   pattern = "*/node_modules/*",
-  command = "lua vim.diagnostic.disable(0)",
+  command = "lua vim.diagnostic.enable(false, { bufnr = 0 })",
 })
 
 -- Enable spell checking for certain file types
@@ -111,35 +111,15 @@ fn.autocmd({ "BufRead", "BufNewFile" }, {
   command = "setlocal conceallevel=0",
 })
 
--- CRITICAL: Ensure Treesitter folding works for all filetypes
--- Workaround for snacks.nvim picker fold issue
-fn.autocmd("FileType", {
-  group = fn.augroup("TreesitterFolding", { clear = true }),
-  pattern = "*",
-  callback = function()
-    -- Only set if treesitter parser is available for this filety
-    if pcall(vim.treesitter.get_parser) then
-      vim.wo.foldmethod = "expr"
-      vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    end
-  end,
-})
-
 -- Attach specific keybindings in which-key for specific filetypes
 local present, _ = pcall(require, "which-key")
-
 -- stylua: ignore start
 if not present then return end
 local _, pwk = pcall(require, "plugins.which-key.setup")
 
 fn.autocmd("BufEnter", { pattern = "*.md", callback = function() pwk.attach_markdown(0) end })
 fn.autocmd("BufEnter", { pattern = { "package.json" }, callback = function() pwk.attach_npm(0) end })
-
 fn.autocmd("BufEnter", {
   pattern = { "*test.js", "*test.ts", "*test.tsx", "*spec.ts", "*spec.tsx" },
   callback = function() pwk.attach_jest(0) end,
 })
-
-fn.autocmd("FileType", { pattern = "spectre_panel", callback = function() pwk.attach_spectre(0) end })
-fn.autocmd("FileType", { pattern = "NvimTree", callback = function() pwk.attach_nvim_tree(0) end })
-

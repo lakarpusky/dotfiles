@@ -17,7 +17,7 @@ opt.timeoutlen = 300 -- faster key sequence timeout
 opt.redrawtime = 1500 -- max time for syntax highlighting
 opt.lazyredraw = false -- don't set true, causes issues with modern nvim
 
--- Bufer & Window Behavior
+-- Buffer & Window Behavior
 -- switchbuf: When switching buffers, prefer: last window -> existing tab -> already open window
 opt.switchbuf = { "uselast", "usetab", "useopen" }
 opt.confirm = true -- confirm before closing unsaved
@@ -57,10 +57,10 @@ opt.background = "dark" -- colorschemes that can be light or dark will be made d
 opt.title = true -- Allows neovim to send the Terminal details of the current window, instead of just getting 'v'
 
 -- Indentation
-opt.tabstop = 2 -- 2 sapces for tabs (also prettier default)
+opt.tabstop = 2 -- 2 spaces for tabs (also prettier default)
 opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy ident from current line when starting a new one
+opt.autoindent = true -- copy indent from current line when starting a new one
 opt.smartindent = true -- smart auto-indenting
 
 -- Allow backspace on indent, end of line or insert mode start position
@@ -71,7 +71,7 @@ opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 opt.mouse = "a" -- enable mouse support
 
 -- Search
-opt.ignorecase = true -- ingore case when searching
+opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if search include mixed case, assumes we want case-sensitive
 opt.incsearch = true -- incremental search
 opt.hlsearch = true -- highlight search results
@@ -96,16 +96,6 @@ opt.cmdheight = 0 -- hide command line when not in use (modern UI)
 -- Special modes
 opt.virtualedit = "block" -- visual block beyond line end
 opt.inccommand = "split" -- live preview of substitutions
-
--- Fillcharts & gui
-opt.fillchars:append({
-  diff = " ",
-  fold = " ",
-  foldopen = "",
-  foldclose = "",
-  foldsep = " ",
-  eob = " ",
-})
 
 -- Cursor shape
 opt.guicursor = "n-v-c-sm:block-nCursor-blinkwait50-blinkon50-blinkoff50,"
