@@ -38,6 +38,10 @@ return {
         "yamllint",
         "luacheck",
         "js-debug-adapter",
+        -- python specific
+        "pyright",
+        "ruff",
+        "debugpy",
       },
       auto_update = true,
       run_on_start = true,

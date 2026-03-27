@@ -80,6 +80,6 @@ return {
     }
 
     vim.lsp.config("*", default_config)
-    vim.lsp.enable({ "cssls", "eslint", "jsonls", "lua_ls", "yamlls" })
+    vim.lsp.enable({ "cssls", "eslint", "jsonls", "lua_ls", "yamlls", "pyright" })
   end,
 }

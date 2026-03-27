@@ -45,6 +45,7 @@ return {
         "comment",
         "tmux",
         "toml",
+        "python",
       },
       incremental_selection = {
         enable = true,

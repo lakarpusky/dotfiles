@@ -28,6 +28,25 @@ return {
     dap.listeners.before.event_exited.dapui_config = function() dapui.close() end
     -- stylua: ignore end
 
+    dap.adapters.python = {
+      type = "executable",
+      command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
+      args = { "-m", "debugpy.adapter" },
+    }
+
+    dap.configurations.python = {
+      {
+        type = "python",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}",
+        pythonPath = function()
+          local venv = os.getenv("VIRTUAL_ENV")
+          return venv and (venv .. "/bin/python") or "python3"
+        end,
+      },
+    }
+
     -- Adapter setup for JS/TS (using the Mason-installed js-debug-adapter)
     require("dap-vscode-js").setup({
       debugger_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter",

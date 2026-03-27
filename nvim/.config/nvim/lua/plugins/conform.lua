@@ -22,6 +22,7 @@ return {
         yaml = { "prettierd" },
         markdown = { "mdformat" },
         lua = { "stylua" },
+        python = { "ruff_format" },
       },
 
       -- CRITICAL: Async formatting prevents blocking on save (better UX for large files)
