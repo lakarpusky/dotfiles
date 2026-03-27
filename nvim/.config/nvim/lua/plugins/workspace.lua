@@ -76,7 +76,7 @@ return {
     ft = "json",
     dependencies = "MunifTanjim/nui.nvim",
     opts = {
-      colors = { up_to_date = "#3C4048", outdated = "#fc514e" },
+      highlights = { up_to_date = "#3C4048", outdated = "#fc514e" },
       icons = { enable = true, style = { outdated = "  ", up_to_date = "  " } },
       autostart = true, -- When `package.json` is opened
       hide_up_to_date = true,
