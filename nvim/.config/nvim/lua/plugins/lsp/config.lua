@@ -21,7 +21,7 @@ return {
     local blink, u = require("blink.cmp"), require("utils")
     local border = u.icons.borders.dashed
 
-    vim.lsp.set_log_level("ERROR")
+    vim.lsp.log.set_level("ERROR")
     vim.diagnostic.config({
       -- Show inline diagnostics, source only if multiple
       virtual_text = { spacing = 4, source = "if_many", prefix = "●" },
@@ -62,14 +62,20 @@ return {
       properties = { "documentation", "detail", "additionalTextEdits" },
     }
 
+    local function with_opts(handler, opts)
+      return function(err, result, ctx, config)
+        vim.lsp.handlers[handler](err, result, ctx, vim.tbl_extend("force", config or {}, opts))
+      end
+    end
+
     local default_config = {
       capabilities = capabilities,
       on_attach = u.lsp.on_attach,
       -- Performance: Wait 200ms after typing stops before sending changes to LSP
       flags = { debounce_text_changes = 200 },
       handlers = {
-        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+        ["textDocument/signatureHelp"] = with_opts("signature_help", { border = border }),
+        ["textDocument/hover"] = with_opts("hover", {
           border = border,
           focusable = true,
           source = "always",
