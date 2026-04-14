@@ -82,7 +82,7 @@ return {
     },
 
     indent = {
-      enabled = true,
+      enabled = false,
       char = "▏",
       animate = { enabled = false },
       indent = {
@@ -90,7 +90,7 @@ return {
         only_scope = true,
       },
       scope = {
-        enabled = true,
+        enabled = false,
         only_current = true,
         only_scope = true,
         hl = "SnacksIndentScope",

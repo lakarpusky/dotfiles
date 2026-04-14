@@ -14,19 +14,15 @@ return {
   config = function()
     local mason = require("mason")
     local mason_tool_installer = require("mason-tool-installer")
-
     mason.setup({ ui = { icons = require("utils.icons").mason } })
-
     -- Single source of truth for all Mason-managed tools
     -- LSP servers + formatters + linters + debug adapters
     mason_tool_installer.setup({
       ensure_installed = {
         "html-lsp",
         "css-lsp",
-        "stylelint-lsp",
         "lua-language-server",
         "emmet-ls",
-        "eslint-lsp",
         "json-lsp",
         "yaml-language-server",
         -- Formatters
@@ -34,6 +30,8 @@ return {
         "stylua",
         "mdformat",
         -- Linters
+        "eslint-lsp",
+        "stylelint-language-server",
         "jsonlint",
         "yamllint",
         "luacheck",

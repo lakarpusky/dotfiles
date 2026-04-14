@@ -98,10 +98,10 @@ return {
           max_items = 100,
           -- High score offset prioritizes LSP completions over other sources
           score_offset = 1000,
-          show_autoImports = true,
-          trigger_characters = { ".", '"', "'", "/", "@", "<" },
+          -- show_autoImports = true,
+          -- trigger_characters = { ".", '"', "'", "/", "@", "<" },
           -- Resolve additional details when item is inserted (lazy loading for performance)
-          resolve_on_insert = true,
+          -- resolve_on_insert = true,
           -- filter = function(ctx, items)
           --   -- Prefer items from ts_ls over other LSP servers
           --   local ts_items = {}
