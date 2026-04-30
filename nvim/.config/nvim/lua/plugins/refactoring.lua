@@ -11,52 +11,14 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   keys = {
-    {
-      "<leader>re",
-      function()
-        require("refactoring").refactor("Extract Function")
-      end,
-      mode = "x",
-      desc = "Extract Function",
-    },
-    {
-      "<leader>rf",
-      function()
-        require("refactoring").refactor("Extract Function To File")
-      end,
-      mode = "x",
-      desc = "Extract Function to File",
-    },
-    {
-      "<leader>rv",
-      function()
-        require("refactoring").refactor("Extract Variable")
-      end,
-      mode = "x",
-      desc = "Extract Variable",
-    },
-    {
-      "<leader>ri",
-      function()
-        require("refactoring").refactor("Inline Variable")
-      end,
-      mode = { "n", "x" },
-      desc = "Inline Variable",
-    },
-    {
-      "<leader>rb",
-      function()
-        require("refactoring").refactor("Extract Block")
-      end,
-      desc = "Extract Block",
-    },
-    {
-      "<leader>rbf",
-      function()
-        require("refactoring").refactor("Extract Block To File")
-      end,
-      desc = "Extract Block To File",
-    },
+    -- stylua: ignore start
+    { "<leader>re", function() require("refactoring").refactor("Extract Function") end, mode = "x", desc = "Extract Function" },
+    { "<leader>rf", function() require("refactoring").refactor("Extract Function To File") end, mode = "x", desc = "Extract Function to File" },
+    { "<leader>rv", function() require("refactoring").refactor("Extract Variable") end, mode = "x", desc = "Extract Variable" },
+    { "<leader>ri", function() require("refactoring").refactor("Inline Variable") end, mode = { "n", "x" }, desc = "Inline Variable" },
+    { "<leader>rb", function() require("refactoring").refactor("Extract Block") end, desc = "Extract Block" },
+    { "<leader>rbf", function() require("refactoring").refactor("Extract Block To File") end, desc = "Extract Block To File" },
+    -- stylua: ignore end
   },
   config = function()
     require("refactoring").setup({
