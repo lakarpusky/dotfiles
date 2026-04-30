@@ -5,24 +5,21 @@
 -- faster and more accurate syntax highlighting.
 --
 return {
-  "nvim-treesitter/nvim-treesitter",
-  event = { "BufReadPre", "BufNewFile" },
-  brach = "main",
-  lazy = false,
-  build = ":TSUpdate",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-  ---@class lazyvim.TSConfig: TSConfig
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      auto_install = true,
-      indent = { enable = true },
-      highlight = { enable = true },
-      matchup = { enable = true },
-      ensure_installed = {
-        "diff",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    dependencies = {
+      "windwp/nvim-ts-autotag",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    },
+    config = function()
+      require("nvim-treesitter").setup({
+        install_dir = vim.fn.stdpath("data") .. "/site",
+      })
+
+      require("nvim-treesitter").install({
         "editorconfig",
         "git_config",
         "gitcommit",
@@ -34,7 +31,6 @@ return {
         "css",
         "scss",
         "json",
-        "jsonc",
         "jsdoc",
         "lua",
         "luadoc",
@@ -48,56 +44,48 @@ return {
         "tmux",
         "toml",
         "python",
-      },
-      incremental_selection = {
-        enable = true,
-        keymaps = {
-          init_selection = "<C-space>",
-          node_incremental = "<C-space>",
-          node_decremental = "<bs>",
-        },
-      },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-            ["ac"] = "@class.outer",
-            ["ic"] = "@class.inner",
-            ["ai"] = "@conditional.outer",
-            ["ii"] = "@conditional.inner",
-            ["al"] = "@loop.outer",
-            ["il"] = "@loop.inner",
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-            ["ab"] = "@block.outer",
-            ["ib"] = "@block.inner",
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true,
-          goto_next_start = {
-            ["]f"] = "@function.outer",
-            ["]c"] = "@class.outer",
-          },
-          goto_previous_start = {
-            ["[f"] = "@function.outer",
-            ["[c"] = "@class.outer",
-          },
-        },
-        swap = {
-          enable = true,
-          swap_next = { ["<leader>sn"] = "@parameter.inner" },
-          swap_previous = { ["<leader>sp"] = "@parameter.inner" },
-        },
-      },
-    })
+      })
 
-    -- Use bash parser for zsh files
-    vim.treesitter.language.register("bash", "zsh")
-    vim.treesitter.language.register("markdown", "markdown_inline")
-  end,
+      -- Use bash parser for zsh files
+      -- vim.treesitter.language.register("bash", "zsh")
+      -- vim.treesitter.language.register("markdown", "markdown_inline")
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = {
+          "editorconfig",
+          "git_config",
+          "gitcommit",
+          "gitignore",
+          "javascript",
+          "typescript",
+          "tsx",
+          "html",
+          "css",
+          "scss",
+          "json",
+          "jsdoc",
+          "lua",
+          "luadoc",
+          "markdown",
+          "markdown_inline",
+          "vim",
+          "vimdoc",
+          "yaml",
+          "regex",
+          "comment",
+          "tmux",
+          "toml",
+          "python",
+        },
+        callback = function()
+          vim.treesitter.start()
+          -- Folds (README "Folds")
+          vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+          vim.wo[0][0].foldmethod = "expr"
+          -- Indentation (README "Indentation" — flagged experimental)
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
+  },
 }
