@@ -3,7 +3,7 @@ nvim/.config/nvim/lazy-lock.json
 nvim/.config/nvim/CLAUDE.md
 nvim/.config/nvim/new.md
 
-./CLAUDE.md
+CLAUDE.md
 
 # macOS
 .DS_Store
