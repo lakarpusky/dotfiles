@@ -9,8 +9,9 @@
 -- enable Language Servers as needed.
 --
 return {
-  "williamboman/mason.nvim",
+  "mason-org/mason.nvim",
   dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+  tag = "v2.2.1",
   config = function()
     local mason = require("mason")
     local mason_tool_installer = require("mason-tool-installer")
@@ -18,6 +19,7 @@ return {
     -- Single source of truth for all Mason-managed tools
     -- LSP servers + formatters + linters + debug adapters
     mason_tool_installer.setup({
+      log_level = vim.log.levels.DEBUG,
       ensure_installed = {
         "html-lsp",
         "css-lsp",
