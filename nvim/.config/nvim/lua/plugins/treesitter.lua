@@ -46,9 +46,11 @@ return {
         "python",
       })
 
-      -- Use bash parser for zsh files
-      -- vim.treesitter.language.register("bash", "zsh")
-      -- vim.treesitter.language.register("markdown", "markdown_inline")
+      -- Register parsers for filetypes whose names differ from the parser name.
+      vim.treesitter.language.register("javascript", { "javascriptreact" })
+      vim.treesitter.language.register("tsx", { "typescriptreact" })
+      vim.treesitter.language.register("markdown", { "markdown_inline" })
+      vim.treesitter.language.register("bash", { "zsh" })
 
       vim.api.nvim_create_autocmd("FileType", {
         pattern = {
@@ -57,7 +59,9 @@ return {
           "gitcommit",
           "gitignore",
           "javascript",
+          "javascriptreact",
           "typescript",
+          "typescriptreact",
           "tsx",
           "html",
           "css",
@@ -79,10 +83,8 @@ return {
         },
         callback = function()
           vim.treesitter.start()
-          -- Folds (README "Folds")
           vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
           vim.wo[0][0].foldmethod = "expr"
-          -- Indentation (README "Indentation" — flagged experimental)
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
         end,
       })
