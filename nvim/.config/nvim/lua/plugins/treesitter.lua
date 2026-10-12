@@ -44,6 +44,8 @@ return {
         "tmux",
         "toml",
         "python",
+        "rust",
+        "ron",
       })
 
       -- Register parsers for filetypes whose names differ from the parser name.
@@ -80,6 +82,8 @@ return {
           "tmux",
           "toml",
           "python",
+          "rust",
+          "ron",
         },
         callback = function()
           vim.treesitter.start()
